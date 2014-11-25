@@ -8,7 +8,7 @@ module.exports = class RunOnCompilePlugin
     if cfg.command?
       @runOnCompile = true
       @commandToRun = cfg.command
-      @failureMessage = if cfg.failureMessage? then cfg.failureMessage else "Command Failed"
+      @failureMessage = cfg.failureMessage ? "Command Failed"
     else
       @runOnCompile = false
 
@@ -22,4 +22,3 @@ module.exports = class RunOnCompilePlugin
         notifier.notify
           'title': @failureMessage
           'message': stdout.split("\n")[1]
-          "subtitle": stdout.split("\n")[1].replace(/[^\w]/gi, ' ')
