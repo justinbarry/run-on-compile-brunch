@@ -8,17 +8,18 @@ module.exports = class RunOnCompilePlugin
     if cfg.command?
       @runOnCompile = true
       @commandToRun = cfg.command
-      @failureMessage = cfg.failureMessage ? "Command Failed"
+      @failureMessage = cfg.failureMessage
     else
       @runOnCompile = false
 
   onCompile: ()=>
     return unless @runOnCompile
+
     exec = require('child_process').exec;
     exec @commandToRun, (error, stdout, stderr) ->
       console.log stdout
       if error?
         notifier = require('node-notifier')
         notifier.notify
-          'title': @failureMessage
+          'title': @failureMessage ? "Command Failed"
           'message': stdout.split("\n")[1]
