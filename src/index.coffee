@@ -16,7 +16,7 @@ module.exports = class RunOnCompilePlugin
     return unless @runOnCompile
 
     exec = require('child_process').exec;
-    exec @commandToRun, (error, stdout, stderr) ->
+    exec @commandToRun, (error, stdout, stderr) =>
       console.log stdout
       if error?
         notifier = require('node-notifier')
