@@ -1,0 +1,23 @@
+{
+  "name": "run-on-compile-brunch",
+  "version": "1.0.0",
+  "description": "This runs an arbitrary command after a successful brunch compilation.",
+  "main": "./lib/index",
+  "scripts": {
+    "prepublish": "rm -rf lib && coffee --bare --output lib/ src/"
+  },
+  "repository" : {
+    "type" : "git"
+    , "url" : "http://github.com/justinbarry/run-on-compile-brunch.git"
+  },
+
+  "author": "Justin",
+  "license": "MIT",
+  "dependencies": {
+    "node-notifier": "4.0.2"
+  },
+
+  "devDependencies": {
+    "coffee-script": "1.6.2"
+  }
+}
