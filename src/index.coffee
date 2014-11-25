@@ -8,7 +8,7 @@ module.exports = class RunOnCompilePlugin
     if cfg.command?
       @runOnCompile = true
       @commandToRun = cfg.command
-      @failureMessage = cfg.failureMessage ? "Command Failed"
+      @failureMessage = if cfg.failureMessage? then cfg.failureMessage else "Command Failed"
     else
       @runOnCompile = false
 
